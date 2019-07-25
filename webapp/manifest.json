@@ -1,0 +1,143 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "zR002.ZR002_APP",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"API_BUSINESS_PARTNER": {
+				"uri": "/S4HC_QSystem_ECC/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"YY1_R002_ZLABEL_ODATA_CDS": {
+				"uri": "/S4HC_QSystem_ECC/sap/opu/odata/sap/YY1_R002_ZLABEL_ODATA_CDS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/YY1_R002_ZLABEL_ODATA_CDS/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "zR002.ZR002_APP.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.table": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "zR002.ZR002_APP.i18n.i18n"
+				}
+			},
+			"zBussPartAdd": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "API_BUSINESS_PARTNER",
+				"preload": true
+			},
+			"zLabelOdata": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "YY1_R002_ZLABEL_ODATA_CDS",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "zR002.ZR002_APP.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteBusinessPartnerAdd",
+					"pattern": "",
+					"target": [
+						"TargetBusinessPartnerAdd"
+					]
+				}
+			],
+			"targets": {
+				"TargetBusinessPartnerAdd": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewLevel": 1,
+					"viewId": "BusinessPartnerAdd",
+					"viewName": "BusinessPartnerAdd"
+				},
+				"App": {
+					"viewType": "XML",
+					"viewName": "App"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

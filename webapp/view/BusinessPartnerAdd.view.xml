@@ -1,0 +1,17 @@
+<mvc:View controllerName="zR002.ZR002_APP.controller.BusinessPartnerAdd" 
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  xmlns:table="sap.ui.table"
+		  displayBlock="true" 
+		  xmlns="sap.m">
+		<App id="BusinessPartnerAdd">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<VBox id = "VBoxTable">
+							
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+</mvc:View>
